@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="onClickLoad"
+        android:text="初始化ReactContext" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="onClickUnLoad"
+        android:text="卸载ReactContext" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="onClickSubA"
+        android:text="加载subA模块" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="onClickSubB"
+        android:text="加载subB模块" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="onClickSubC"
+        android:text="加载subC模块，未进行ReactContext非空判断" />
+
+
+</LinearLayout>
