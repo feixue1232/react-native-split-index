@@ -1,7 +1,7 @@
 # react-native-split-index
 基于RN0.5的bundle拆分机制，可以支持拆分的bundle以字符串索引的形式替换掉rn默认的int值机型，使拆分后的bundle不存在值依赖，避免选成升级困扰~
 
-下载后，可使用AndroidStudio 或 react-native run-android 直接启动查看实例
+下载后，可使用AndroidStudio 或 react-native run-android 直接启动查看实例,在Android平台上ReactContext的延迟加载和各bundle的主动加载。JS拆包是通用的，demo中不包括oc代码部分加载bundle，oc加载bundle应该更简单~
 
 如果希望移植到自己的项目里，或改js代码试下效果，你需要做以下步骤：
 
