@@ -6,13 +6,21 @@
 如果希望移植到自己的项目里，或改js代码试下效果，你需要做以下步骤：
 
 1.将/source目录下的Bundler.js替换以下文件
+
 node_modules/metro-bundler/src/Bundler/Bundler.js
+
 将/source目录下的index.js替换以下文件
+
 node_modules/metro-bundler/src/Resolver/index.js
+
 注：以下解释为啥改成字符串的原因，如果不懂的话，请观注我的blog：https://blog.csdn.net/yeputi1015，实在不懂，反正替换以下就对了~~~
+
 这两个文件是使bundle中的moduleId,默认打包分配为int值替换为包名+文件名的字符串形式，为了使拆包之后升级方便而需要修改的。
+
 因为默认情况下，common.bundle + SubA.bundle + SubB.bundle.我们根据业务拆分了这三个包。
+
 按默认打包规则，common.bundle中的部分比如为(0-138), 业务A中的js文件分配的（138-200），业务B中的js文件分配为(201-300)
+
 假如这时，我们需要为common基础模块中增加一个js文件，那common.bundle中分配的moduleId的范围必将为0-139，那业务A和业务B的bundle包也需要升级，这样存在依赖关系。。我们更希望升级任意一个bundle文件，并不会对其它的未升级bundle文件造成影响~
 
 2.这时你可修改js文件进行偿试，包括在common中增加js文件等~
