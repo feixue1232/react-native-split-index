@@ -34,4 +34,3 @@ node_modules/metro-bundler/src/Resolver/index.js
 
 如果能帮到您， 求star ~~~~
 
-另外到2018年底前，由于一些原因，希望能有机会出去试试。。。希望公司缺人的朋友帮忙推荐下，主要是Android及RN相关都可以，相关信息可以发到我的邮箱，感谢~~
