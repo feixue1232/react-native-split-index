@@ -193,8 +193,10 @@ class Resolver {
     // here, we build a map of all require strings (relative and absolute)
     // to the canonical ID of the module they reference
     for (const _ref2 of dependencyPairs) {var _ref3 = _slicedToArray(_ref2, 2);const name = _ref3[0];const path = _ref3[1];
-      resolvedDeps[name] = "'" + this.getModuleForPath(path).localPath + "'";   //[wk]  修改引用中的值
-      // resolvedDeps[name] = getModuleId({ path });  // [wk] 源文件
+      let pathStr = "'" + this.getModuleForPath(path).localPath + "'";//[wk]  修改引用中的值
+      pathStr = pathStr.replace(/\\/g, "/");//由于mac跟window平台取得的路径差异(mac上取到的是/ windows是\)所以把\统一替换成/
+      resolvedDeps[name] = pathStr;
+	  // resolvedDeps[name] = getModuleId({ path }); //之前用数字做索引的老代码
     }
 
     // if we have a canonical ID for the module imported here,
@@ -244,13 +246,17 @@ class Resolver {
     } else {
       const moduleId = getModuleId(module);
 
+      let pathStr = module.localPath;
+      pathStr = pathStr.replace(/\\/g,"/");
+
       code = this.resolveRequires(
       module,
       getModuleId,
       code,
       dependencyPairs,
       dependencyOffsets);
-      name = module.localPath; // [wk]
+      name = pathStr;
+      // name = module.localPath; // [wk]
       code = defineModuleCode(moduleId, code, name, dev);
     }
 

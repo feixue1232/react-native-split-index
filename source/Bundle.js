@@ -174,11 +174,13 @@ class Bundle extends BundleBase {
   }
 
   _addRequireCall(moduleId) {
-    // const code = `;require(${JSON.stringify(moduleId)});`; //[wk]
+    // const code = `;require(${JSON.stringify(moduleId)});`;
     let modeName = moduleId; // [wk]
     this.getModules().map((key, value) => {
         if (key.id == moduleId) {
-            modeName = this.resolver.getModuleForPath(key.sourcePath).localPath; // [wk]
+            let pathStr = this.resolver.getModuleForPath(key.sourcePath).localPath;
+            pathStr = pathStr.replace(/\\/g, "/");
+            modeName = pathStr; // [wk]
         }
     });
 
